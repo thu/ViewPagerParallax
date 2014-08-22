@@ -24,27 +24,6 @@ public class MyTestActivity extends Activity {
         pager.setBackgroundAsset(R.raw.sanfran);
         pager.setAdapter(new my_adapter());
 
-        final Button add_page_button = (Button) findViewById(R.id.add_page_button);
-        add_page_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                num_pages = Math.min(num_pages+1, MAX_PAGES);
-                pager.getAdapter().notifyDataSetChanged();
-            }
-        });
-
-        if (savedInstanceState!=null) {
-            num_pages = savedInstanceState.getInt("num_pages");
-            pager.setCurrentItem(savedInstanceState.getInt("current_page"), false);
-        }
-    }
-
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        outState.putInt("num_pages", num_pages);
-        final ViewPagerParallax pager = (ViewPagerParallax) findViewById(R.id.pager);
-        outState.putInt("current_page", pager.getCurrentItem());
     }
 
     private class my_adapter extends PagerAdapter {
